@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mix & Match Workout Plans</title>
+  <style>
+    /* Add your desired styles for the page here */
+  </style>
+</head>
+<body>
+  <h1>Choose Your Ideal Workout Match</h1>
+
+  <div class="image-container">
+    <h3>Current Body Shape:</h3>
+    <ul>
+      <li>
+        <a href="skinny_workout.html">
+          <img src="images/skinny.png" alt="Skinny" title="Skinny" data-shape="skinny">
+        </a>
+      </li>
+      <li>
+        <a href="normal_workout.html">
+          <img src="images/normal.png" alt="Normal" title="Normal" data-shape="normal">
+        </a>
+      </li>
+      <li>
+        <a href="fat_workout.html">
+          <img src="images/fat.png" alt="Fat" title="Fat" data-shape="fat">
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="image-container">
+    <h3>Desired Look:</h3>
+    <ul>
+      <li>
+        <a href="fit_workout.html">
+          <img src="images/fit.png" alt="Fit" title="Fit" data-shape="fit">
+        </a>
+      </li>
+      <li>
+        <a href="muscle_workout.html">
+          <img src="images/muscle.png" alt="Muscular" title="Muscular" data-shape="muscle">
+        </a>
+      </li>
+      <li>
+        <a href="toned_workout.html">
+          <img src="images/toned.png" alt="Toned" title="Toned" data-shape="toned">
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <p>Click on one image from each set to see your personalized workout plan!</p>
+
+  <script>
+    // This script is just a suggestion and might need adjustments based on your desired behavior.
+
+    const images = document.querySelectorAll('.image-container ul li a');
+
+    images.forEach(image => {
+      image.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        const chosenShape = this.dataset.shape; // Get the data-shape attribute value
+        const otherContainer = document.querySelector('.image-container:not(:first-child)'); // Get the other image container
+        const otherShape = otherContainer.querySelector('a.active').dataset.shape; // Get the already selected shape from the other container
+
+        // Update the URL based on the chosen shapes
+        window.location.href = `combined_workout.html?shape1=${chosenShape}&shape2=${otherShape}`;
+      });
+    });
+
+    // Add click event listener for the other container images (if needed)
+
+  </script>
+</body>
+</html>

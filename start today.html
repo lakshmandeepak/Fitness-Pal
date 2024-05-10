@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Today - Workout Pal</title>
+  <style>
+    /* Replicating styles from the homepage */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #ffffff; /* Same background color as the homepage */
+      color: #0066EE; /* Same text color as the homepage */
+    }
+    /* Styling for the transparent navigation bar */
+    .navbar {
+      background-color: rgb(255, 255, 255); /* Navigation bar background color */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px;
+      /* Add more styles here as needed */
+    }
+
+    /* Replicating the styles for the Workout Pal text */
+    .webpage-name {
+      color: #0066EE; /* Same color as the homepage */
+      font-size: 28px; /* Same font size as the homepage */
+      font-weight: bold;
+      font-family: Helvetica, sans-serif; /* Same font as the homepage */
+      margin-left: 100px; /* Same positioning as the homepage */
+      text-transform: lowercase; /* Same text transform as the homepage */
+      /* Add more styles here as needed */
+    }
+    .navbar-links {
+      display: flex;
+      font-style: Helvetica;
+      justify-content: flex-end; /* Align links to the right */
+      text-align: left; /* Left-align text */
+      margin-right: 20px; /* Increased distance from the right border */
+    }
+
+    .navbar-links a {
+      color: rgb(0, 102, 238); /* White color for links */
+      text-decoration: none;
+      font-size: 20px; /* Reduced font size by 15px */
+      margin: 0 15px; /* Decreased space between links */
+      /* Add more styles here as needed */
+    }
+    .hamburger-btn {
+      color: #0066EE; /* Set the color of the hamburger button */
+      font-size: 24px; /* Adjust the size of the hamburger button */
+      margin-right: 30px; /* Add space between the button and other links */
+      cursor: pointer; /* Show pointer cursor on hover */
+    }
+    .welcome-text {
+      font-size: 17px;
+      color: black;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif light; 
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom:-10px;
+    }
+    .workout-pal-text {
+      font-size: 29px;
+      font-weight: bold;
+      color: #0066EE;
+      font-family: Helvetica, sans-serif;
+      text-align: center;
+      margin-top: 15px;
+    }
+    .end-line-text {
+      font-size: 34px;
+      font-weight: bold;
+      color: #0066EE;
+      font-family: Helvetica, sans-serif;
+      text-align: center;
+      margin-top: 15px;
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+      border-radius: 20px;
+    }
+    .image-container img {
+      margin: 0 10px;
+      height: 275px;
+      width: 275 px;
+      border-radius: 20px;
+    }
+    .image-caption {
+      position: absolute; /* Position captions absolutely */
+      margin-left: 44px;
+      font-size: 20px;
+      color: black;
+      text-align: leftt;
+      width: 100%;
+    }
+      /* Adjust the width of the images as needed */
+    
+  </style>
+</head>
+<body>
+    <div class="navbar">
+        <!-- Webpage name with a link to the homepage -->
+        <div class="webpage-name">
+          <a href="home page.html" style="text-decoration: none; color:#0066EE;">Workout Pal</a>
+        </div>
+        <!-- Hamburger menu icon -->
+        <div class="hamburger-btn" onclick="toggleMenu()">&#9776;</div>
+        <!-- ... (other links from the homepage navbar) ... -->
+    </div>
+
+    <p class="welcome-text">Welcome to</p>
+    <!-- Workout Pal Text -->
+    <h2 class="workout-pal-text">Workout Pal</h2>
+
+    <!-- Image container -->
+    <div class="image-container">
+      <div>
+        <a href="BMI.html">
+          <img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\start today pic1.png" alt="Image 1" >
+        </a>
+        <p class="image-caption">Ready for some wins?<br> Start tracking, it’s easy!</p>
+      </div>
+      <div>
+        <a href="Work Plan.html">
+          <img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\start today pic3.png" alt="Image 3" style="width: 265px;">
+        </a>
+        <p class="image-caption">Are you ready to work<br>towards that dream body?</p>
+      </div>
+      <div>
+        <a href="Calories.html">
+          <img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\start today pic2.png" alt="Image 2">
+        </a>
+        <p class="image-caption">And make mindful eating<br> a habit for life</p>
+      </div>
+    </div>
+    <h2  class=".end-line-text" style="text-align: center; margin-top: 125px;">"Today is the day." </h2>
+
+
+<!-- Additional content for the "Start Today" page can be added below -->
+<script>
+  function toggleMenu() {
+    var navbar = document.querySelector('.navbar');
+
+    var menuOptions = document.createElement('div');
+    menuOptions.classList.add('menu-options');
+
+    var options = ['BMI', 'Workout', 'Calories Counter'];
+
+    options.forEach(function(option) {
+      var menuItem = document.createElement('div');
+      menuItem.textContent = option;
+      menuItem.classList.add('menu-item');
+      menuItem.addEventListener('click', function() {
+        // Open the respective HTML file based on the selected menu item
+        if (option === 'BMI') {
+          window.location.href = 'bmi.html';
+        } else if (option === 'Workout') {
+          window.location.href = 'workout.html';
+        } else if (option === 'Calories Counter') {
+          window.location.href = 'calories_counter.html';
+        }
+      });
+      menuOptions.appendChild(menuItem);
+    });
+
+    // Append the menu options to the navbar
+    navbar.appendChild(menuOptions);
+
+    // Toggle the menu display
+    menuOptions.classList.toggle('show-menu');
+
+    // Click anywhere outside the menu to close it
+    document.addEventListener('click', function(event) {
+      var isClickInside = menuOptions.contains(event.target);
+      var isHamburger = event.target.classList.contains('hamburger-btn');
+      if (!isClickInside && !isHamburger) {
+        menuOptions.classList.remove('show-menu');
+        navbar.removeChild(menuOptions);
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

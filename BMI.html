@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+        margin: 0;
+        font-family: Helvetica, sans-serif;
+        background-color: #0066EE; /* Same text color as the homepage */
+        }
+        .container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        }
+
+        .input-group {
+        margin-bottom: 15px;
+        color: #ffffff;
+        font-family:Helvetica, sans-serif;
+        font-weight: bold;
+        }
+
+        label {
+        display: inline-block;
+        width: 120px;
+        text-align: right;
+        margin-right: 10px;
+        }
+
+        input[type="number"], select {
+        width: 200px;
+        padding: 5px;
+        }
+
+        button {
+        padding: 10px 20px;
+        background-color: #ffffff;
+        color: #0066EE;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        margin-top: 30px;
+        }
+
+        button:hover {
+        background-color: #ebebeb;
+        }
+
+        #result {
+        margin-top: 20px;
+        font-weight: bold;
+        }
+        .navbar {
+        background-color: #0066EE; /* Navigation bar background color */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 11px;
+        /* Add more styles here as needed */
+        }
+
+        /* Replicating the styles for the Workout Pal text */
+        .webpage-name {
+        color: #ffffff; /* Same color as the homepage */
+        font-size: 28px; /* Same font size as the homepage */
+        font-weight: bold;
+        font-family: Helvetica, sans-serif; /* Same font as the homepage */
+        margin-left: 100px; /* Same positioning as the homepage */
+        text-transform: lowercase; /* Same text transform as the homepage */
+        /* Add more styles here as needed */
+        }
+        .navbar-links {
+        display: flex;
+        font-style: Helvetica;
+        justify-content: flex-end; /* Align links to the right */
+        text-align: left; /* Left-align text */
+        margin-right: 20px; /* Increased distance from the right border */
+        }
+
+        .navbar-links a {
+        color: rgb(255, 255, 255); /* White color for links */
+        text-decoration: none;
+        font-size: 20px; /* Reduced font size by 15px */
+        margin: 0 15px; /* Decreased space between links */
+        /* Add more styles here as needed */
+        }
+        .hamburger-btn {
+        color: #ffffff; /* Set the color of the hamburger button */
+        font-size: 24px; /* Adjust the size of the hamburger button */
+        margin-right: 30px; /* Add space between the button and other links */
+        cursor: pointer; /* Show pointer cursor on hover */
+        }
+
+        
+        /*what is BMI section */
+        .info-section {
+            background-color:#ffffff ; /* Baby blue background color */
+            width: 100%;
+            padding: 30px 0;
+        }
+
+        .info-section .container {
+            text-align: center;
+            color: #000000; /* Text color */
+            font-family: Helvetica, sans-serif;
+        }
+
+
+        /*what is BMI Calculator section */
+        .info-section-2 {
+            background-color:rgb(9, 1, 40); /* Baby blue background color */
+            width: 100%;
+            padding: 30px 0;
+        }
+
+        .info-section-2 .container {
+            text-align: center;
+            color: #ffffff; /* Text color */
+            font-family: Helvetica, sans-serif;
+        }
+
+        /*How BMI is Calculated section */
+        .info-section-3 {
+            background-color:rgb(255, 255, 255); /* Baby blue background color */
+            width: 100%;
+            padding: 30px 0;
+        }
+
+        .info-section-3 .container {
+            text-align: center;
+            color: #000000; /* Text color */
+            font-family: Helvetica, sans-serif;
+        }
+
+
+    
+        .image {
+            width: 1100px; /* Doubled the width */
+            height: 700px; /* Doubled the height */
+            margin-left: auto; /* Set left margin to auto */
+            margin-right: auto; /* Set right margin to auto */
+            margin-bottom: 30px; /* Move the image 30px below the navigation bar */
+            
+            display: block; /* Ensures the image behaves as a block element */
+        }
+        .image2 {
+            width: 300px; /* Set image width */
+            height: auto; /* Maintain aspect ratio */
+            float: left; /* Float the image to the left */
+            margin-right: 20px; /* Add a small margin between image and text */
+            border-radius: 10px;
+        }
+        .image3 {
+            width: 450px; /* Set image width */
+            height: 400px; /* Maintain aspect ratio */
+            float: center; /* Float the image to the left */
+            margin-right: 20px; /* Add a small margin between image and text */
+            border-radius: 10px;
+        }
+
+        .content-wrapper {
+            overflow: hidden; /* Clear floating elements */
+        }
+
+        .start-button-2 {
+            border-radius: 20px; /* Rounded corners */
+            height: 17px; /* Height of 8px */
+            width: 150px; /* Width of 15px */
+            font-style: Helvetica;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #0066EE; /* White background color */
+            color: #ffffff; /* Blue text color */
+            border: 2px solid #ffffff; /* Blue border */
+            padding: 8px; /* Padding around the text */
+            text-align:center;
+            
+            padding-bottom: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <!-- Webpage name with a link to the homepage -->
+        <div class="webpage-name">
+          <a href="home page.html" style="text-decoration: none; color:#ffffff;">Workout Pal</a>
+        </div>
+        <!-- Hamburger menu icon -->
+        <div class="hamburger-btn" onclick="toggleMenu()">&#9776;</div>
+        <!-- ... (other links from the homepage navbar) ... -->
+    </div>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <h1 style="text-align: left; margin-left: 30px; font-size: 50px; color: #ffffff;">BMI Calculator</h1>
+        <h2 style="text-align: left; margin-top: -25px;  margin-left: 30px;font-size: 25px; color: #ffffff;">Body Mass Index</Body></h2>
+        <br>
+        <br>
+    
+        
+        <div class="input-group">
+        <label for="gender">Gender:</label>
+        <select id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <label for="age">Age:</label>
+        <input type="number" id="age" placeholder="Enter Age">
+        </div>
+        <br>
+        <br>
+        <div class="input-group">
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" placeholder="Enter Height">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" placeholder="Enter Weight">
+        </div>
+        <br>
+
+        <button onclick="calculateBMI()">Calculate BMI</button>
+        <div id="result" style="margin-block-end: 100px;"></div>
+    </div>
+
+    <!-- What is BMI-->
+    <div class="info-section">
+        <div class="container">
+            <h2 style="color: #000000; font-size: 57px; text-align: center;font-weight: bolder;">What is BMI(Body Mass Index)?</h2>
+            <p style="color: #000000; text-align: left;text-align: justify;font:size 40px;">
+                BMI or Body Mass Index or bmi index can be referred to as a metric to measure or evaluate whether a person’s body weight is accurate according to that person’s height or not. Gaining weight doesn’t necessarily mean that a person is becoming overweight. Let’s take an example to understand this better. Suppose, you and your friend went for a weight measurement and found out that you are weighing 80 Kg while your friend is weighing 70 kg. It may feel at first instance that you are overweight but that is not the right approach. You need to consider the height as well to analyse whether you two are overweight or not. Suppose you have a height of 5’7” while your friend is 5’. This means, even though your friend is lower weight than yours but her bmi index is higher at bmi 30 (approximately) as her height is short. On the other hand, you being the taller one, you are still not obese like your friend as your BMi is somewhere around 27-28. You can check the exact bmi index in the chart above according to your weight and height.
+                <br>
+                <br>
+                <br>
+                Now, if you are comparing your normal bmi range with a person of another gender, then the same will vary again. So, while height is the main factor for analysing body mass, the gender of the person also matters.
+            </p>
+
+        </div>
+        <br>
+        <br>
+        <img  class="image"   src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\BMI img1.png" alt="Image 1">
+    </div>
+
+    <!-- What is BMI Calculator-->
+    <div class="info-section-2">
+        <div class="container">
+            <h2 style="color: #ffffff; font-size: 57px; text-align: center;font-weight: bolder;">What is BMI Calculator?</h2>
+            <br>
+            <div class="content-wrapper">
+                <img class="image2" src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\BMI img2.png" alt="Image 2">
+                <p style="color: #ffffff; text-align: left; text-align: justify; font-size: 20px;">
+                    A body mass index calculator can be described as a tool for calculating the body mass of an individual. There are two types of bmi calculation formulas that these bmi calculators use which are the International System of Units (SI) and the other one is Imperial System. These two will be discussed in detail later in the article.
+                    <br><br>
+                    So, bmi calculator is an online tool where you need to input your gender, height, age and weight, and the calculator will give you your body mass of yours and you can also check whether your BMI index of yours is healthy or not.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- How is BMI Calculated-->
+    <div class="info-section-3">
+        <div class="container">
+            <h2 style="color: #000000; font-size: 57px; text-align: center;font-weight: bolder;">How is BMI Calculated?</h2>
+            <br>
+            <p style="color: #000000; text-align: left; text-align: justify; font-size: 20px;">
+                As mentioned above, there are two bmi calculation formulas which are used widely to find out the bmi index of individuals. Let’s discuss both in detail :       
+            </p>
+            <br>
+            <br>
+            <h3 style="color: #000000; text-align: left; text-align: justify; font-size: 25px;font-weight: bold;">
+                BMI calculation formula for the 'SI' measurement system
+            </h3>
+            <img class="image3" src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\BMI img3.png" alt="Image 3">
+
+        </div>
+
+    </div>
+
+
+    <!-- END section -->
+    <div id="new-section" style="background-color:rgb(9, 1, 40); padding: 0 20px;padding-bottom:100px;padding-top:75px;">
+        <div style="color: white; margin-left: 100px; margin-right: 100px;">
+          <!-- Title -->
+          <!-- Left- content -->
+          <h style="font-family: Helvetica; font-size: 40px; font-weight: bold;padding-top: 30px;">workout pal</h>
+          <br><br>
+      
+          <!-- Quote -->
+          <p style="font-family: Helvetica; font-size: 15px; color: white;padding-top: 20px;">Make yourself stronger than your excuses.</p>
+          <!-- Button -->
+          <div  class="start-button-2" style="background-color: white; color: #0066EE; font-family: Helvetica; font-size: 22px; font-weight: bold; text-align: center;">
+            Start today >
+          </div>
+        </div>
+        <!-- Right content -->
+        <div style="color: white; text-align: right;margin-top: -150px;margin-right: 210px;">
+          <!-- Contact Us -->
+          <h style="font-family: Helvetica; font-size: 45px; font-weight: bold;">Contact Us</h>
+          <br><br>
+          <!-- Buttons as images -->
+          <div>
+            <a href="contact.html"><img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\icons8-instagram-circle-30.png" alt="Button 1" style="width: 30px; height: 30px;"></a>
+            <a href="contact.html"><img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\icons8-facebook-30.png" alt="Button 2" style="width: 28px; height:28 px; "></a>
+            <a href="contact.html"><img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\icons8-linkedin-circled-48.png" alt="Button 1" style="width: 32px; height: 32px;"></a>
+            <a href="contact.html"><img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\icons8-twitter-circled-64.png" alt="Button 2" style="width: 32px; height: 32px; margin-right: 30px;"></a>
+      
+            <!-- Add more images as needed -->
+          </div>
+        </div>
+      </div>
+    
+
+    <script>
+        function calculateBMI() {
+            const gender = document.getElementById('gender').value;
+            const age = parseInt(document.getElementById('age').value);
+            const height = parseInt(document.getElementById('height').value);
+            const weight = parseInt(document.getElementById('weight').value);
+
+            if (isNaN(age) || isNaN(height) || isNaN(weight)) {
+                alert('Please enter valid numbers for age, height, and weight.');
+                return;
+            }
+
+            const heightInMeters = height / 100;
+            const bmi = weight / (heightInMeters * heightInMeters);
+
+            let bmiCategory = '';
+            if (bmi < 18.5) {
+                bmiCategory = 'Underweight';
+            } else if (bmi >= 18.5 && bmi < 25) {
+                bmiCategory = 'Normal weight';
+            } else if (bmi >= 25 && bmi < 30) {
+                bmiCategory = 'Overweight';
+            } else {
+                bmiCategory = 'Obese';
+            }
+
+            const result = `Your BMI: ${bmi.toFixed(2)} (${bmiCategory})`;
+            document.getElementById('result').innerHTML = result;
+        }
+        function toggleMenu() {
+            var navbar = document.querySelector('.navbar');
+
+            var menuOptions = document.createElement('div');
+            menuOptions.classList.add('menu-options');
+
+            var options = ['BMI', 'Workout', 'Calories Counter'];
+
+            options.forEach(function(option) {
+                var menuItem = document.createElement('div');
+                menuItem.textContent = option;
+                menuItem.classList.add('menu-item');
+                menuItem.addEventListener('click', function() {
+                // Open the respective HTML file based on the selected menu item
+                if (option === 'BMI') {
+                    window.location.href = 'bmi.html';
+                } else if (option === 'Workout') {
+                    window.location.href = 'workout.html';
+                } else if (option === 'Calories Counter') {
+                    window.location.href = 'calories_counter.html';
+                }
+                });
+                menuOptions.appendChild(menuItem);
+            });
+
+            // Append the menu options to the navbar
+            navbar.appendChild(menuOptions);
+
+            // Toggle the menu display
+            menuOptions.classList.toggle('show-menu');
+
+            // Click anywhere outside the menu to close it
+            document.addEventListener('click', function(event) {
+                var isClickInside = menuOptions.contains(event.target);
+                var isHamburger = event.target.classList.contains('hamburger-btn');
+                if (!isClickInside && !isHamburger) {
+                menuOptions.classList.remove('show-menu');
+                navbar.removeChild(menuOptions);
+                }
+            });
+        }
+
+        // Function to open a new page on button click
+        function openNewPage() {
+            window.location.href = "start%20today.html"; // Use the file name directly
+        }
+
+        // Update the event listener for the first "Start today" button
+    
+        var startButton2 = document.querySelector('.start-button-2');
+        startButton2.addEventListener('click', openNewPage);
+
+    </script>
+</body>
+</html>
+ 

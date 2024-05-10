@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work Page</title>
+  <!-- Add your stylesheets, scripts, or other meta tags here if needed -->
+  <style>
+    /* Style for the image options */
+    body {
+      margin: 0;
+      font-family:Helvetica, sans-serif;
+      background-color: #0066EE; /* Background color for the body */
+    }
+    .navbar {
+        background-color: #ffffff; /* Navigation bar background color */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 11px;
+        /* Add more styles here as needed */
+    }
+    .webpage-name {
+        color: #0066EE; /* Color for the webpage name */
+        font-size: 28px;
+        font-weight: bold;
+        font-family: Helvetica, sans-serif;
+        margin-left: 100px;
+        text-transform: lowercase;
+        /* Add more styles here as needed */
+    }
+    .hamburger-btn {
+        color: #0066EE; /* Color for the hamburger button */
+        font-size: 24px;
+        margin-right: 30px;
+        cursor: pointer;
+        /* Add more styles here as needed */
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 20px;
+        color: #ffffff;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Distribute space between items */
+        gap: 20px; /* Gap between images */
+    }
+
+    .option-image {
+        width: 200px; /* Set width */
+        height: 250px; /* Set height */
+        border-radius: 10px;
+        transition: filter 0.3s ease-in-out;
+        margin: 10px 0;
+        cursor: pointer;
+        object-fit: cover; /* Maintain aspect ratio */
+    }
+
+    /* Styles for selected images */
+
+    .selected-image {
+        filter: brightness(100%);
+        border: 2px solid rgb(0, 0, 0);
+    }
+  </style>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work Page</title>
+  <style>
+    /* ... your existing CSS styles ... */
+  </style>
+</head>
+<body>
+    <div class="navbar">
+        <!-- Webpage name with a link to the homepage -->
+        <div class="webpage-name">
+            <a href="home page.html" style="text-decoration: none; color:#0066EE;">Workout Pal</a>
+          </div>
+          <!-- Hamburger menu icon -->
+          <div class="hamburger-btn" onclick="toggleMenu()">&#9776;</div>
+          <!-- ... (other links from the homepage navbar) ... -->
+    </div>
+
+    <div class="container">
+        <h1>Get Your Custom Workout Plan</h1>
+
+        <form id="workoutForm">
+        <div>
+            <label>Select your current body shape:</label><br>
+            <label for="skinnyRadio">
+            <img class="option-image" src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\Work plan img1(current body).png" alt="Skinny" onclick="selectOption('skinny')">
+            </label>
+            <input type="radio" id="skinnyRadio" name="bodyShape" value="Skinny" style="display: none;">
+
+            <label for="normalRadio">
+            <img class="option-image" src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\Work plan img2(current body).png" alt="Normal" onclick="selectOption('normal')">
+            </label>
+            <input type="radio" id="normalRadio" name="bodyShape" value="Normal" style="display: none;">
+
+            <label for="fatRadio">
+            <img class="option-image" src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\Work plan img3(current body).png" alt="Fat" onclick="selectOption('fat')">
+            </label>
+            <input type="radio" id="fatRadio" name="bodyShape" value="Fat" style="display: none;">
+        </div>
+        <br><br>
+
+        <div>
+            <label>Select how you want to look:</label><br>
+            <label for="fitRadio"><img class="option-image" src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\Work plan img1(final body).png" alt="Fit" onclick="selectOption('fit')"></label>
+            <input type="radio" id="fitRadio" name="desiredLook" value="Fit" style="display: none;">
+
+            <label for="bigRadio"><img class="option-image" src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\Work plan img2(final body).png"alt="Big" onclick="selectOption('big')"></label>
+            <input type="radio" id="bigRadio" name="desiredLook" value="Big" style="display: none;">
+
+            <label for="strongRadio"><img class="option-image" src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\Work plan img3(final body).png" alt="Strong" onclick="selectOption('strong')"></label>
+            <input type="radio" id="strongRadio" name="desiredLook" value="Strong" style="display: none;">
+        </div>
+
+        <br><br>
+        <button type="button" onclick="suggestWorkout()">Get My Workout Plan</button>
+        </form>
+
+        <div id="workoutPlan"></div>
+    </div>
+
+    <script>
+        let selectedBodyShape = null;
+        let selectedDesiredLook = null;
+    
+        function suggestWorkout() {
+            selectedBodyShape = document.querySelector('input[name="bodyShape"]:checked').value;
+            selectedDesiredLook = document.querySelector('input[name="desiredLook"]:checked').value;
+
+            if (selectedBodyShape && selectedDesiredLook) {
+                // Build URL based on selection
+                const url = `workout_plan_${selectedBodyShape.toLowerCase()}_${selectedDesiredLook.toLowerCase()}.html`;
+
+                // Update page title
+                document.title = `Workout Plan: ${selectedBodyShape} to ${selectedDesiredLook}`;
+
+                // Load the chosen HTML page
+                window.location.href = url;
+            } 
+            else {
+                console.error('Please select both body shape and desired look.');
+            }
+        }
+    
+        document.querySelectorAll('.option-image').forEach(image => {
+          image.addEventListener('click', function() {
+            const option = this.alt;
+            const radioBtn = document.querySelector(`input[name="${this.parentElement.getAttribute('for')}"]`);
+    
+            if (radioBtn) {
+              radioBtn.checked = true;
+            } else {
+              console.error('Radio button not found for:', option);
+            }
+          });
+        });
+
+        
+
+
+        function toggleMenu() {
+            var navbar = document.querySelector('.navbar');
+
+            var menuOptions = document.createElement('div');
+            menuOptions.classList.add('menu-options');
+
+            var options = ['BMI', 'Workout', 'Calories Counter'];
+
+            options.forEach(function(option) {
+                var menuItem = document.createElement('div');
+                menuItem.textContent = option;
+                menuItem.classList.add('menu-item');
+                menuItem.addEventListener('click', function() {
+                // Open the respective HTML file based on the selected menu item
+                if (option === 'BMI') {
+                    window.location.href = 'bmi.html';
+                } else if (option === 'Workout') {
+                    window.location.href = 'workout.html';
+                } else if (option === 'Calories Counter') {
+                    window.location.href = 'calories_counter.html';
+                }
+                });
+                menuOptions.appendChild(menuItem);
+            });
+
+            // Append the menu options to the navbar
+            navbar.appendChild(menuOptions);
+
+            // Toggle the menu display
+            menuOptions.classList.toggle('show-menu');
+
+            // Click anywhere outside the menu to close it
+            document.addEventListener('click', function(event) {
+                var isClickInside = menuOptions.contains(event.target);
+                var isHamburger = event.target.classList.contains('hamburger-btn');
+                if (!isClickInside && !isHamburger) {
+                menuOptions.classList.remove('show-menu');
+                navbar.removeChild(menuOptions);
+                }
+            });
+        }
+        
+        
+    </script>
+  
+</body>
+</html>

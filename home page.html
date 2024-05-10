@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Pal</title>
+  <style>
+    /* General styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0066EE; /* Background color for the body */
+      color: #fff; /* Text color for the body */
+    }
+
+    /* Styling for the transparent navigation bar */
+    .navbar {
+      background-color: #0066EE; /* Navigation bar background color */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 11px;
+      /* Add more styles here as needed */
+    }
+
+    /* Styling for the webpage name */
+    .webpage-name {
+      color: #fff; /* White color */
+      font-size: 28 px; /* Reduced font size by 10px */
+      font-weight: bold;
+      font-family: Helvetica, sans-serif; /* Changed font to Helvetica */
+      margin-left: 100px; /* Increased distance from the left border */
+      text-transform: lowercase; /* Display in lowercase */
+      /* Add more styles here as needed */
+    }
+
+    /* Styling for the links */
+    .navbar-links {
+      display: flex;
+      font-style: Helvetica;
+      justify-content: flex-end; /* Align links to the right */
+      text-align: left; /* Left-align text */
+      margin-right: 20px; /* Increased distance from the right border */
+    }
+
+    .navbar-links a {
+      color: rgb(255, 255, 255); /* White color for links */
+      text-decoration: none;
+      font-size: 20px; /* Reduced font size by 15px */
+      margin: 0 15px; /* Decreased space between links */
+      /* Add more styles here as needed */
+    }
+
+
+
+    .main-content {
+      padding-top: 160px; /* Adjusted padding */
+      display: flex; /* Display as flex container */
+      align-items: flex-start; /* Align items to the start */
+      margin-left: 100px; /* Increased distance from the left border */
+    }
+
+    .main-content .text-content {
+      flex: 1; /* Take remaining width */
+    }
+
+    .main-content .small-text {
+      font-size: 21px; /* Reduced font size by 10px */
+      font-family: Helvetica, sans-serif;
+      margin-bottom: 10px; /* Adjusted margin */
+    }
+
+    .main-content h1 {
+      font-size: 66px; /* Reduced font size by 10px */
+      font-family: Helvetica, sans-serif;
+      font-weight: bold;
+      margin: 0;
+      line-height: 1.2;
+      margin-bottom: 10px; /* Add margin between the lines */
+    }
+
+    .additional-text {
+      font-family: Helvetica, sans-serif;
+      font-size: 21px; /* Reduced font size by 10px */
+      margin-top: 11px; /* Adjusted margin */
+    }
+
+    /* Styling for the image */
+    .main-content img {
+      width: 300px; /* Doubled the width */
+      height: 400px; /* Doubled the height */
+      margin-left: 10px; /* Moved to the left */
+      margin-right: 100px; /* Margin to match content's left margin */
+      margin-bottom: 100px; /* Move the image 100px below the navigation bar */
+      border-radius: 20px; /* Rounded corners */
+    }
+    /* New class for left-aligned image */
+    .left-align-image {
+      width: 350px;
+      height: 475px;
+      border-radius: 20px;
+      margin-left: 100px;
+      margin-bottom: 100px;
+      margin-right: 10px;
+    }
+
+
+    /* Button styling */
+    .start-button-1 {
+      border-radius: 20px; /* Rounded corners */
+      height: 20px; /* Height of 8px */
+      width: 125px; /* Width of 15px */
+      font-style: Helvetica;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: white; /* White background color */
+      color: #0066EE; /* Blue text color */
+      border: 2px solid #0066EE; /* Blue border */
+      padding: 8px; /* Padding around the text */
+      text-align: center;
+      margin-top: 10px;
+    }
+    .start-button-2 {
+      border-radius: 20px; /* Rounded corners */
+      height: 17px; /* Height of 8px */
+      width: 150px; /* Width of 15px */
+      font-style: Helvetica;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #0066EE; /* White background color */
+      color: #ffffff; /* Blue text color */
+      border: 2px solid #ffffff; /* Blue border */
+      padding: 8px; /* Padding around the text */
+      text-align:center;
+      
+      padding-bottom: 15px;
+    }
+
+    /* Styling for the About us section */
+    #about-us {
+      background-color: white; /* Set background to white */
+      color: #0066EE; /* Set text color to blue */
+      padding: 20px;
+    }
+
+    
+
+    /* New styles for 'how-it-works' section */
+    #how-it-works {
+      background-color: rgb(255, 255, 255);
+      color: black;
+      text-align: center;
+    }
+
+    #how-it-works .content {
+      padding: 30px;
+    }
+
+    #how-it-works .center-image {
+      width: 30px; /* Adjust the width of the centered image */
+      height: 30px; /* Maintain aspect ratio */
+      display: block; /* Ensure the image stays centered */
+      margin: auto; /* Center the image */
+      margin-top: 30px; /* Adjust the top margin */
+      background-color: rgb(255, 255, 255); /* Set background color to match the container */
+    }
+
+    #how-it-works .left-align-image {
+      width: 375px; /* Adjust the width of the left-aligned image */
+      height: 475px; /* Maintain aspect ratio */
+      border-radius: 20px;
+      margin-top: 40px; /* Add space at the top */
+      margin-left: 300px;
+    }  
+    #how-it-works .right-align-image {
+      width: 375px; /* Adjust the width of the left-aligned image */
+      height: 475px; /* Maintain aspect ratio */
+      border-radius: 20px;
+      margin-top: 40px; /* Add space at the top */
+      margin-left: 300px;
+    }  
+    #our-philosophy .left-image {
+      width: 600px; /* Adjust the width of the left-aligned image */
+      height: 580px; /* Maintain aspect ratio */
+      border-radius: 20px;
+      margin-top: 40px; /* Add space at the top */
+      margin-left: 100px;
+    }
+    .hamburger-btn {
+      color: #ffffff; /* Set the color of the hamburger button */
+      font-size: 24px; /* Adjust the size of the hamburger button */
+      margin-right: 30px; /* Add space between the button and other links */
+      cursor: pointer; /* Show pointer cursor on hover */
+    }
+ </style>
+</head>
+<body>
+
+<!-- Navigation bar -->
+<div class="navbar">
+  <!-- Webpage name -->
+  <div class="webpage-name">
+    <a href="file:///C:/Users/Lakshmandeepak%20R/Documents/PTAC/Fitness_Pal/home%20page.html" style="text-decoration: none; color:rgb(255, 255, 255);">Workout Pal</a>
+  </div>
+
+  <!-- Links -->
+  <div class="navbar-links">
+    <a href="#about-us" onclick="showContent('about-us')">About us</a>
+    <a href="#how-it-works" onclick="showContent('how-it-works')">How it works</a>
+    <a href="#our-philosophy" onclick="showContent('our-philosophy')">Our philosophy</a>
+  </div>
+
+  <!-- Hamburger menu icon -->
+  <div class="hamburger-btn" onclick="toggleMenu()">&#9776;</div>
+</div>
+
+<!-- Main content -->
+<div class="main-content">
+  <!-- Content related to the main page -->
+  <div class="text-content">
+    <div class="small-text">#1 nutrition tracking app</div>
+    <h1 style="margin-bottom: 10px;">Reach your goals</h1>
+    <h1>with <span style="font-weight: normal;">MyFitnessPal</span></h1>
+    <p class="additional-text" style="margin-top: 11px;">Build healthy habits with the all-in-one food, exercise, and calorie tracker.</p>
+    <!-- Button -->
+    <div class="start-button-1">
+      Start today >
+    </div>
+  </div>
+  
+  <!-- Image -->
+  <img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\home page img.png" alt="Image Description">
+</div>
+
+
+
+<!-- How it works content -->
+<div id="how-it-works" class="content" style="background-color: rgb(255, 255, 255); color: black; text-align: center;">
+  <div style="width: 100%; max-width: 1200px; color: rgb(0, 0, 0); padding: 30px; text-align: center;">
+    <!-- Flag Image (Centered) -->
+    <div style="background-color: white; padding: 20px;">
+      <img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\flag.png" alt="Image Description" class="center-image">
+    </div>
+    <!-- Additional Text -->
+    <h1 style="font-family: Helvetica; font-size: 60px; color: black; font-weight: bold; margin-top: 20px;">Hit your health goals in 1-2-3</h1>
+    <br>
+    <div style="display: flex; align-items: flex-start;">
+      <img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\how it works img 1.png" alt="Additional Image" class="left-align-image" style="margin-bottom: 6px; margin-right: 20px;">
+      <!-- Text on the right side of img1 -->
+      <div style="color: #0066EE; font-family: Helvetica; font-size: 60px;text-align:left">
+        <h2 style="font-weight: bold; ">1</h2>
+        <h3 style="color: rgb(0, 0, 0); font-size: 50px; font-weight: bold; margin-top: -45px;">Track food,<br> fitness & fasting</h3>
+        <p style="color: rgb(146, 146, 146); font-size: 15px; margin-top: -40px;">Tracking calories and macros is easy with our<br> barcode scanner and device integration.</p>
+      </div>
+    </div>
+    
+    <div style="display: flex; align-items: flex-start; justify-content: flex-start; margin-left: 100px; margin-right: 110px;">
+      
+      <!-- Text on the left side of img2 -->
+      <div style="color: #0066EE; font-family: Helvetica; font-size: 60px;text-align: right;margin-right: -30px;">
+        <h2 style="font-weight: bold; ">2</h2>
+        <h3 style="color: rgb(0, 0, 0); font-size: 50px; font-weight: bold; margin-top: -45px; text-align: right;">Learn what works</h3>
+        <p style="color: rgb(146, 146, 146); font-size: 15px; margin-top: -40px; text-align: right;">Personalized nutrition insights reveal what's <br>working so you can make smarter choices.</p>
+      </div>
+      <img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\how it works img2.png" alt="Additional Image" class="right-align-image" style="margin-bottom: 6px; margin-left: 50px;">
+      <!-- Image on the right side -->
+      
+    </div>
+    <!-- Additional Image (Left-aligned) -->
+    <div style="display: flex; align-items: flex-start;">
+      <img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\how it works img3.png" alt="Additional Image" class="left-align-image" style="margin-bottom: 6px; margin-right: 20px;">
+      <!-- Text on the right side of img1 -->
+      <div style="color: #0066EE; font-family: Helvetica; font-size: 60px;text-align:left">
+        <h2 style="font-weight: bold; ">3</h2>
+        <h3 style="color: rgb(0, 0, 0); font-size: 50px; font-weight: bold; margin-top: -45px;">Change your<br> habits and reach <br>your goals</h3>
+        <p style="color: rgb(146, 146, 146); font-size: 15px; margin-top: -40px;">Now you have the tools and knowledge <br>to build healthy habits for life.</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- About us content -->
+<div id="about-us" class="content" style="height: 100vh; background-color:rgb(9, 1, 40); display: flex; justify-content: center; align-items: center;">
+  <div style="width: 100%; max-width: 1200px;  color: white; padding: 20px; text-align: center;">
+    <h1 style="font-size: 76px; font-family: Helvetica, sans-serif; font-weight: bold;">About Workout Pal</h1>
+    <p style="font-size: 22px; font-family: Helvetica, sans-serif; text-align: left;margin-left: 100px;">
+      Workout Pal is a leading fitness and weight loss app,<br> assisting millions in achieving their health objectives.<br> It functions as a calorie tracker, aiding users in recording<br> their dietary intake. With access to an extensive food <br>database of over 18 million items, it's more than just a<br> simple calorie counter; it's a comprehensive tool for<br> taking charge of one's well-being. 
+    </p>
+    <p style="font-size: 22px; font-family: Helvetica, sans-serif; text-align: right;margin-right: 100px;">
+      Its user-friendly interface and personalized recommendations <br>for workouts and meal plans make it highly sought after. Whether<br> you're a novice or an experienced fitness enthusiast, Workout<br> Pal adapts to your needs. It's not merely an app; it's a dedicated <br>companion on your path to a healthier lifestyle, offering guidance,<br> motivation, and unwavering support throughout your journey.
+    </p>
+  </div>
+</div>
+
+
+<!-- Our Philosophy content -->
+<div id="our-philosophy" class="content" style="background-color:#ffffff; color:#abb1b8; text-align: center;">
+  <div style="width: 100%; max-width: 1200px; color: rgb(0, 0, 0); padding: 30px; text-align: center;">
+    <div style="display: flex; align-items: flex-start;margin-left: 100px;margin-right: 100px;margin-top: 60px; margin-bottom: 60px;">
+    
+      <img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\Our Philosophy img1.png" alt="Additional Image" class="left-image" style="margin-bottom: 6px; margin-right: 100px;">
+      <!-- Text on the right side of img1 -->
+      <div style="color: #abb1b8; font-family: Helvetica; font-size: 15px;text-align:left ;margin-right: 60px;margin-left:-60px;padding-top: 60px;padding-bottom:60px;">
+    
+        <h1 style="font-weight: bold; font-size: 15px;">Our Philosophy</h1>
+    
+        <h2 style="color: rgb(0, 0, 0); font-size: 50px; font-weight: bold;margin-top: -12px">Knowledge is power</h2>
+        <p2  style="color: rgb(146, 146, 146); font-size: 15px">“Studies show people who keep a food diary are more likely to hit their goals. MyFitnessPal simplifies nutrition and calorie tracking, provides the data you want, and helps you make sense of it all.<br>
+        <br>
+        <p3  style="color: rgb(146, 146, 146); font-size: 15px">Healthy eating is a continuous journey of self-discovery. And the more you track, the more empowered you’ll become to make healthy choices that support your goals.”</p3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- END section -->
+<div id="new-section" style="background-color:rgb(9, 1, 40); padding: 0 20px;padding-bottom:100px;padding-top:75px;">
+  <div style="color: white; margin-left: 100px; margin-right: 100px;">
+    <!-- Title -->
+    <!-- Left- content -->
+    <h style="font-family: Helvetica; font-size: 40px; font-weight: bold;padding-top: 30px;">workout pal</h>
+    <br><br>
+
+    <!-- Quote -->
+    <p style="font-family: Helvetica; font-size: 15px; color: white;padding-top: 20px;">Make yourself stronger than your excuses.</p>
+    <!-- Button -->
+    <div  class="start-button-2" style="background-color: white; color: #0066EE; font-family: Helvetica; font-size: 22px; font-weight: bold; text-align: center;">
+      Start today >
+    </div>
+  </div>
+  <!-- Right content -->
+  <div style="color: white; text-align: right;margin-top: -150px;margin-right: 210px;">
+    <!-- Contact Us -->
+    <h style="font-family: Helvetica; font-size: 45px; font-weight: bold;">Contact Us</h>
+    <br><br>
+    <!-- Buttons as images -->
+    <div>
+      <a href="contact.html"><img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\icons8-instagram-circle-30.png" alt="Button 1" style="width: 30px; height: 30px;"></a>
+      <a href="contact.html"><img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\icons8-facebook-30.png" alt="Button 2" style="width: 28px; height:28 px; "></a>
+      <a href="contact.html"><img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\icons8-linkedin-circled-48.png" alt="Button 1" style="width: 32px; height: 32px;"></a>
+      <a href="contact.html"><img src="C:\Users\Lakshmandeepak R\Documents\PTAC\Fitness_Pal\icons8-twitter-circled-64.png" alt="Button 2" style="width: 32px; height: 32px; margin-right: 30px;"></a>
+
+      <!-- Add more images as needed -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script>
+  // Function to toggle the visibility of the content sections
+  function showContent(sectionId) {
+    var contents = document.getElementsByClassName('content');
+    for (var i = 0; i < contents.length; i++) {
+      contents[i].style.display = 'block'; // Display all sections
+    }
+    
+    var navbar = document.querySelector('.navbar');
+    navbar.style.backgroundColor = 'rgb(0, 102, 238)';
+  }
+
+  // Function to toggle the visibility of the mobile menu (hamburger menu)
+  
+  function toggleMenu() {
+    var navbar = document.querySelector('.navbar');
+
+    var menuOptions = document.createElement('div');
+    menuOptions.classList.add('menu-options');
+
+    var options = ['BMI', 'Workout', 'Calories Counter'];
+
+    options.forEach(function(option) {
+      var menuItem = document.createElement('div');
+      menuItem.textContent = option;
+      menuItem.classList.add('menu-item');
+      menuItem.addEventListener('click', function() {
+        // Open the respective HTML file based on the selected menu item
+        if (option === 'BMI') {
+          window.location.href = 'bmi.html';
+        } else if (option === 'Workout') {
+          window.location.href = 'workout.html';
+        } else if (option === 'Calories Counter') {
+          window.location.href = 'calories_counter.html';
+        }
+      });
+      menuOptions.appendChild(menuItem);
+    });
+
+    // Append the menu options to the navbar
+    navbar.appendChild(menuOptions);
+
+    // Toggle the menu display
+    menuOptions.classList.toggle('show-menu');
+
+    // Click anywhere outside the menu to close it
+    document.addEventListener('click', function(event) {
+      var isClickInside = menuOptions.contains(event.target);
+      var isHamburger = event.target.classList.contains('hamburger-btn');
+      if (!isClickInside && !isHamburger) {
+        menuOptions.classList.remove('show-menu');
+        navbar.removeChild(menuOptions);
+      }
+    });
+  }
+
+  // Function to open a new page on button click
+  function openNewPage() {
+    window.location.href = "start%20today.html"; // Use the file name directly
+  }
+
+  // Update the event listener for the first "Start today" button
+  var startButton1 = document.querySelector('.start-button-1');
+  startButton1.addEventListener('click', openNewPage);
+  var startButton2 = document.querySelector('.start-button-2');
+  startButton2.addEventListener('click', openNewPage);
+</script>
+
+</body>
+</html>
